@@ -13,7 +13,8 @@ full_df = full_df\
 
 
 st.title('BMZ Fragility Dashboard')
-st.write("Why is this failing?")
+st.write("""Definitions on TeamNet: 
+         https://teamnet.bmz.bund.de/raum/10034/_layouts/15/WopiFrame.aspx?sourcedoc=%7B98395878-E61E-44AB-9C77-E5E0EF1961D6%7D&file=defining_fragility_indicators.xlsx&action=default&IsList=1&ListId=%7B5AB29548-B6D5-46BA-8ED6-1700391C493B%7D&ListItemId=3760""")
 
 
 # Create a sidebar for navigation
