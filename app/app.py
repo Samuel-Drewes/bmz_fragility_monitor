@@ -41,6 +41,8 @@ fig = px.choropleth(geo_merge,
                     color_continuous_scale=red_green_scale  # Or use 'Plotly3' for a built-in option
                     )
 fig.update_geos(fitbounds="locations", visible=False)
+fig.update_layout(width=1000, height=900)
+
 
 # Overall Title
 
