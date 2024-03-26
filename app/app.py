@@ -2,7 +2,17 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 
-st.title('My Application')
+
+full_df = pd.read_csv("upload_data/full_df.csv")
+
+full_df = full_df\
+    .rename(columns={'name': 'Country Name', 'weighted_mean': "Total Score"})\
+    .drop(columns = ['iso', 'country-code'])\
+    .set_index('Country Name')\
+    .dropna(thresh=4)
+
+
+st.title('BMZ Fragility Dashboard')
 st.write("Why is this failing?")
 
 
@@ -10,8 +20,10 @@ st.write("Why is this failing?")
 page = st.sidebar.selectbox('Choose your page', ['Home', 'Visualization 1', 'Visualization 2'])
 
 if page == 'Home':
-    st.title('Home Page')
-    st.write('Welcome to the application!')
+    st.title('General Fragility Overview')
+    st.write('All dimensions considered')
+
+    st.dataframe(data=full_df)
 
 elif page == 'Visualization 1':
     st.title('Visualization 1')
@@ -23,9 +35,8 @@ elif page == 'Visualization 2':
 
 
 
-    full_df = pd.read_csv("upload_data/full_df.csv")
 
-    st.dataframe(data=full_df)
+    
 
 
 
