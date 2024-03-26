@@ -23,7 +23,6 @@ geo_merge = world.merge(full_df, left_on = 'iso_a3', right_on = 'iso')
 geo_merge = geo_merge.drop(columns=['pop_est', 'continent', 'name_x', 'iso_a3', 'gdp_md_est', 'country-code'])\
     .rename(columns={'name_y': 'Country Name', 'weighted_mean': "Total Score"})\
     .set_index('Country Name')
-geo_merge_2 = geo_merge.set_index('Country Name')
 
 red_green_scale = [
     [0, 'red'], 
@@ -31,11 +30,11 @@ red_green_scale = [
     [1, 'green']  
 ]
 
-fig = px.choropleth(geo_merge_2,
-                    geojson=geo_merge_2.geometry,
-                    locations=geo_merge_2.index,
+fig = px.choropleth(geo_merge,
+                    geojson=geo_merge.geometry,
+                    locations=geo_merge.index,
                     color="Total Score",
-                    hover_name=geo_merge_2.index,  # or any column for names
+                    hover_name=geo_merge.index,  # or any column for names
                     hover_data=['Total Score', 'Dimension_G', 'Dimension_S', 'Dimension_S', 'Dimension_I', 'Dimension_C',
        'Dimension_E', 'Dimension_R'],  # Add more columns here
                     projection="mercator",
