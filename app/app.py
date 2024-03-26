@@ -4,6 +4,7 @@ import pandas as pd
 
 
 full_df = pd.read_csv("upload_data/full_df.csv")
+compare_df = pd.read_csv("upload_data/compare_df.csv")
 
 full_df = full_df\
     .rename(columns={'name': 'Country Name', 'weighted_mean': "Total Score"})\
@@ -21,10 +22,14 @@ st.write("""Definitions on TeamNet:
 page = st.sidebar.selectbox('Choose your page', ['Home', 'Visualization 1', 'Visualization 2'])
 
 if page == 'Home':
-    st.title('General Fragility Overview')
-    st.write('All dimensions considered')
 
+    st.header('General Fragility Overview')
+    st.write('All dimensions considered')
     st.dataframe(data=full_df)
+
+    st.header('OECD Comparison')
+    st.write('Compared to OECD States of Fragility 2022')
+    st.dataframe(data=compare_df)
 
 elif page == 'Visualization 1':
     st.title('Visualization 1')
