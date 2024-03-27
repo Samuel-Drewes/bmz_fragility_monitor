@@ -3,3 +3,4 @@ pandas
 numpy
 geopandas
 plotly
+scikit-learn
