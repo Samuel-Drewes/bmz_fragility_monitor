@@ -53,9 +53,12 @@ st.write("""Definitions on TeamNet:
 
 
 # Sidebar for navigation
-page = st.sidebar.selectbox('Choose your page', ['Home', 'Visualization 1', 'Visualization 2'])
+page = st.sidebar.selectbox('Choose your page', ['All Dimension Overview', 'One Dimension'])
 
-if page == 'Home':
+
+# All Dimension Page
+
+if page == 'All Dimension Overview':
 
     st.header('General Fragility Overview')
     st.write('All dimensions considered')
@@ -69,13 +72,13 @@ if page == 'Home':
     st.plotly_chart(fig)
 
 
-elif page == 'Visualization 1':
+# Specific Dimension Page
+
+
+elif page == 'One Dimension':
     st.title('Visualization 1')
     # Code for visualization 1
 
-elif page == 'Visualization 2':
-    st.title('Visualization 2')
-    # Code for visualization 2
 
 
 
