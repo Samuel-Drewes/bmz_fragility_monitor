@@ -12,5 +12,5 @@ n_components = st.slider("Number of Components", min_value=2, max_value=10, valu
 model_type = st.selectbox("Type of Model", ["Model A", "Model B", "Model C"])
 
 
-print(n_components)
-print(model_type)
+st.write(f"This many: {n_components}")
+st.write(f"This model: {model_type}")
