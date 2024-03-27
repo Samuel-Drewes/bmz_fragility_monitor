@@ -16,7 +16,7 @@ all_dim_x = pd.read_csv("upload_data/full_df.csv").drop(columns=['weighted_mean'
 # Function Definition
 
 
-def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters = 5):
+def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters = 5, , random_state = False):
     
     pca = PCA(n_components=2)
 
@@ -28,13 +28,29 @@ def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters
     
     X = principalDf.drop(columns=['name']).values
     
+    # if model_choice == "Birch":
+    #     model = Birch(n_clusters=num_of_clusters)
+    # if model_choice == "KMeans":
+    #     model = KMeans(n_clusters=num_of_clusters)
+    # if model_choice == "GaussianMixture":
+    #     model = GaussianMixture(n_components=num_of_clusters)
+
     if model_choice == "Birch":
-        model = Birch(n_clusters=num_of_clusters)
+        if random_state:
+            model = Birch(n_clusters=num_of_clusters, random_state = 25)
+        else:
+            model = Birch(n_clusters=num_of_clusters)
     if model_choice == "KMeans":
-        model = KMeans(n_clusters=num_of_clusters)
+        if random_state:
+            model = KMeans(n_clusters=num_of_clusters, random_state=25)
+        else:
+            model = KMeans(n_clusters=num_of_clusters)
     if model_choice == "GaussianMixture":
-        model = GaussianMixture(n_components=num_of_clusters)
-        
+        if random_state:
+            model = GaussianMixture(n_components=num_of_clusters, random_state=25)
+        else:
+            model = GaussianMixture(n_components=num_of_clusters)
+
     model.fit(X)
     yhat = model.predict(X)
     
@@ -65,6 +81,8 @@ model_type = st.selectbox("Type of Model", ["Birch", "KMeans", "GaussianMixture"
 
 data_set = st.selectbox("Data", ["All Dimensions", "Dimension G"])
 
+random_state = st.sidebar.checkbox('Fixed Results')
+
 if data_set == "All Dimensions":
     data_2_use = all_dim_x
 if data_set == "Dimension G":
@@ -74,4 +92,5 @@ if data_set == "Dimension G":
 st.plotly_chart(pca_and_clustering(
     df_of_indicators = data_2_use,
     model_choice= model_type,
-    num_of_clusters=n_components))
+    num_of_clusters=n_components
+    random_state=random_state))
