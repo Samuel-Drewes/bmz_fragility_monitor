@@ -61,7 +61,7 @@ st.title("PCA Dashboard")
 
 n_components = st.slider("Number of Components", min_value=2, max_value=10, value=2)
 
-model_type = st.selectbox("Type of Model", ["Model A", "Model B", "Model C"])
+model_type = st.selectbox("Type of Model", ["Birch", "KMeans", "GaussianMixture"])
 
 data_set = st.selectbox("Data", ["All Dimensions", "Dimension G"])
 
