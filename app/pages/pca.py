@@ -72,6 +72,6 @@ if data_set == "Dimension G":
 
 
 st.plotly_chart(pca_and_clustering(
-    df_of_indicators = data_set,
+    df_of_indicators = data_2_use,
     model_choice= model_type,
     num_of_clusters=n_components))
