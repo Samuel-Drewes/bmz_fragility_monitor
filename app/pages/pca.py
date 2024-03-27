@@ -88,9 +88,9 @@ if data_set == "All Dimensions":
 if data_set == "Dimension G":
     data_2_use = dim_G_x
 
+st.write(f"state is {random_state}")
 
 st.plotly_chart(pca_and_clustering(
     df_of_indicators = data_2_use,
     model_choice= model_type,
-    num_of_clusters=n_components
-    random_state=random_state))
+    num_of_clusters=n_components))
