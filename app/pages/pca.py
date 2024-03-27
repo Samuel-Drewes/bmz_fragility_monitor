@@ -46,7 +46,7 @@ def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters
                  y='principal component 2',
                  hover_name='name',
                  color = 'Cluster',
-                 title='Scatter plot of Principal Components')
+                 title='Scatter plot of Principal Components & Clusters')
 
     fig.update_traces(marker=dict(size=10), selector=dict(mode='markers'))  
 
@@ -57,11 +57,11 @@ def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters
 
 
 
-st.title("PCA Dashboard")
+st.title("PCA & Cluster Dashboard")
 
-n_components = st.slider("Number of Components", min_value=2, max_value=10, value=2)
+n_components = st.slider("Number of Components", min_value=2, max_value=10, value=5)
 
-model_type = st.selectbox("Type of Model", ["Birch", "KMeans", "GaussianMixture"])
+model_type = st.selectbox("Type of Model", ["Birch", "KMeans", "GaussianMixture"], index=2)
 
 data_set = st.selectbox("Data", ["All Dimensions", "Dimension G"])
 
