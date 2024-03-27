@@ -16,7 +16,7 @@ all_dim_x = pd.read_csv("upload_data/full_df.csv").drop(columns=['weighted_mean'
 # Function Definition
 
 
-def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters = 5, , random_state = False):
+def pca_and_clustering(df_of_indicators, model_choice = "Birch", num_of_clusters = 5, random_state = False):
     
     pca = PCA(n_components=2)
 
