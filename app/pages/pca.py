@@ -65,6 +65,10 @@ model_type = st.selectbox("Type of Model", ["Model A", "Model B", "Model C"])
 
 data_set = st.selectbox("Data", ["All Dimensions", "Dimension G"])
 
+if data_set == "All Dimensions":
+    data_2_use = all_dim_x
+if data_set == "Dimension G":
+    data_2_use = dim_G_x
 
 
 st.plotly_chart(pca_and_clustering(
