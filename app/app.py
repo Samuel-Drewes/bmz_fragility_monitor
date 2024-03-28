@@ -89,7 +89,7 @@ elif page == 'One Dimension':
     
     st.dataframe(data=single_dim_df_2)
 
-    dim_df = pd.read_csv(f'../upload_data/dim_{dim_select}.csv')\
+    dim_df = pd.read_csv(f'upload_data/dim_{dim_select}.csv')\
         .rename(columns = {'weighted_mean': 'Weighted Score'})
     geo_merge_2 = world.merge(dim_df, left_on = 'iso_a3', right_on = 'iso_a3')
     geo_merge_2 = geo_merge_2[['name_x', 'geometry','Weighted Score']]
