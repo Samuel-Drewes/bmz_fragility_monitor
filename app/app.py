@@ -83,16 +83,33 @@ elif page == 'One Dimension':
     dim_select = st.selectbox\
     ("Dimension", ["G","S","I","C","E","R",])
 
-    single_dim_df = pd.read_csv\
-        (f'upload_data/dim_{dim_select}.csv')\
-            .set_index('name').drop(columns=['iso_a3'])
+    single_dim_df = pd.read_csv(f'upload_data/dim_{dim_select}.csv')\
+        .rename(columns = {'weighted_mean': 'Weighted Score'})
+    single_dim_df_2 = single_dim_df.set_index('name').drop(columns=['iso_a3'])
     
-    st.dataframe(data=single_dim_df)
+    st.dataframe(data=single_dim_df_2)
+
+    dim_df = pd.read_csv(f'../upload_data/dim_{dim_select}.csv')\
+        .rename(columns = {'weighted_mean': 'Weighted Score'})
+    geo_merge_2 = world.merge(dim_df, left_on = 'iso_a3', right_on = 'iso_a3')
+    geo_merge_2 = geo_merge_2[['name_x', 'geometry','Weighted Score']]
 
 
+    fig_2 = px.choropleth(geo_merge_2,
+                        geojson=geo_merge_2.geometry,
+                        locations=geo_merge.index,
+                        color="Weighted Score",
+                        hover_name=geo_merge_2.name_x,  # or any column for names
+                        hover_data=['Weighted Score'],  # Add more columns here
+                        projection="mercator",
+                        color_continuous_scale=red_green_scale  # Or use 'Plotly3' for a built-in option
+                        )
+    fig_2.update_geos(fitbounds="locations", visible=False)
+    fig_2.update_layout(width=1000, height=900)
+    fig_2.show()
 
 
-
+    st.plotly_chart(fig_2)
     
 
 
