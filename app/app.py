@@ -53,7 +53,7 @@ st.write("""Definitions on TeamNet:
 
 
 # Sidebar for navigation
-page = st.sidebar.selectbox('Choose your page', ['All Dimension Overview', 'One Dimension'])
+page = st.sidebar.selectbox('Choose your page', ['All Dimension Overview', 'One Dimension', 'Country Compare'])
 
 
 # All Dimension Page
@@ -112,6 +112,9 @@ elif page == 'One Dimension':
     st.plotly_chart(fig_2)
     
 
+elif page == 'Country Compare':
 
+    oecd_df = pd.read_csv('upload_data/detailed_oecd_dim.csv')
+    st.dataframe(data=oecd_df)
 
 
