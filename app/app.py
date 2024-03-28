@@ -101,7 +101,7 @@ elif page == 'One Dimension':
                         color="Weighted Score",
                         hover_name=geo_merge_2.name_x,  # or any column for names
                         hover_data=['Weighted Score'],  # Add more columns here
-                        projection="mercator",
+                        projection="peters",
                         color_continuous_scale=red_green_scale  # Or use 'Plotly3' for a built-in option
                         )
     fig_2.update_geos(fitbounds="locations", visible=False)
