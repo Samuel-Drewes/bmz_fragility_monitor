@@ -97,7 +97,7 @@ elif page == 'One Dimension':
 
     fig_2 = px.choropleth(geo_merge_2,
                         geojson=geo_merge_2.geometry,
-                        locations=geo_merge.index,
+                        locations=geo_merge_2.index,
                         color="Weighted Score",
                         hover_name=geo_merge_2.name_x,  # or any column for names
                         hover_data=['Weighted Score'],  # Add more columns here
