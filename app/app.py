@@ -113,8 +113,8 @@ elif page == 'One Dimension':
     
 
 elif page == 'Country Compare':
-
-    oecd_df = pd.read_csv('upload_data/detailed_oecd_dim.csv')
+    st.header('OECD Detailed')
+    oecd_df = pd.read_csv('upload_data/full_comp_df.csv')
     st.dataframe(data=oecd_df)
 
 
