@@ -74,10 +74,19 @@ if page == 'All Dimension Overview':
 
 # Specific Dimension Page
 
+dim_select = st.selectbox\
+    ("Dimension", ["G","S","I","C","E","R",])
 
 elif page == 'One Dimension':
-    st.title('Visualization 1')
+
+    st.title('Single Dimension Viewer')
     # Code for visualization 1
+
+    single_dim_df = pd.read_csv\
+        (f'upload_data/dim_{dim_select}.csv')\
+            .set_index('name').drop(columns=['iso_a3'])
+    
+    st.dataframe(data=single_dim_df)
 
 
 
